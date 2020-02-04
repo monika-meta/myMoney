@@ -9,47 +9,30 @@
       WatchList
     </ion-title>
   </ion-toolbar>
+  <ion-searchbar
+  border-color-green
+  showCancelButton="never"
+  placeholder="Search Company"
+></ion-searchbar>
+<ion-grid class="ion-no-margin ion-no-padding stock-info custom-padding">
+  <ion-row  class="bg-dark">
+    <ion-col >
+      <div class="first-item-heading">52 Week High Low</div>
+    </ion-col >
+    <ion-col text-center>
+      MRP/DP
+    </ion-col>
+    <ion-col text-center>
+      CMP/Change
+    </ion-col>
+    <ion-col text-center>
+      Right Allocation
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-header>
 <ion-content>
-  <ion-searchbar
-    border-color-green
-    showCancelButton="never"
-    placeholder="Search Company"
-  ></ion-searchbar>
-  <ion-grid class="ion-no-margin ion-no-padding stock-info custom-padding">
-    <ion-row  class="bg-dark">
-      <ion-col >
-        <div class="first-item-heading">52 Week High Low</div>
-      </ion-col >
-      <ion-col text-center>
-        MRP/DP
-      </ion-col>
-      <ion-col text-center>
-        CMP/Change
-      </ion-col>
-      <ion-col text-center>
-        Right Allocation
-      </ion-col>
-    </ion-row>
-  </ion-grid>
   <ion-list>
-    
-    <!-- <ion-item-sliding *ngFor="let item of items;  let index =index;
-    let isOdd=odd;
-    let isEven=even">
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-        <ion-item-option color="danger" (click)="share(item)">Share</ion-item-option>
-      </ion-item-options>
-  
-      <ion-item>
-        <ion-label>Item Options</ion-label>
-      </ion-item>
-  
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding> -->
     <ion-list lines="none" class="ion-no-margin ion-no-padding">
       <ion-item-sliding *ngFor="let item of items;  let index =index; let isOdd=odd;let isEven=even"   class="bg-green" >
         <ion-item>
@@ -76,8 +59,8 @@
          </ion-grid>
         </ion-item>
         <ion-item-options class="slide-items" side="end">
-         <ion-item-option color="success" (click)="unread(item)"><ion-icon name="notifications"></ion-icon><div>Set Trigger</div></ion-item-option>
-         <ion-item-option color="danger" (click)="unread(item)"><ion-icon name="trash"></ion-icon><div>Remove</div></ion-item-option>
+         <ion-item-option color="success" (click)="deleteItem(index)"><ion-icon name="notifications"></ion-icon><div>Set Trigger</div></ion-item-option>
+         <ion-item-option color="danger" (click)="onClickAlert()"><ion-icon name="trash"></ion-icon><div>Remove</div></ion-item-option>
        </ion-item-options>
        </ion-item-sliding>
       </ion-list>
