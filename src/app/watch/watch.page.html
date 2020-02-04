@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-buttons slot="start"> <ion-menu-button> <img src='../../assets/icon/favicon.png'> </ion-menu-button> </ion-buttons>
     </ion-buttons>
     <ion-title>
       Watch
@@ -9,13 +9,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
+<ion-content >
+  <ion-list >
+    <ion-item *ngFor="let item of items" >
+      {{item.company}}
       <div class="item-note" slot="end">
-        {{item.note}}
+        {{item.isRightStock}}
+      </div>
+      <div class="item-note" slot="end">
+        {{item.currentPrice}}
+      </div>
+      <div class="item-note" slot="end">
+        {{item.weekHigh}}/{{item.weekLow}}
       </div>
     </ion-item>
   </ion-list>
