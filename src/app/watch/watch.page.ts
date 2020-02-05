@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import {watchData} from '../\watch-data';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import { AddWatchComponent } from '../add-watch/add-watch.component';
 
 @Component({
   selector: 'app-watch',
@@ -15,7 +17,7 @@ export class WatchPage {
   private selectedItem: any;
   public items  = [];
   watchList = watchData.watch;
-  constructor(public toastController: ToastController) {
+  constructor(public toastController: ToastController, public popoverController: PopoverController) {
     this.items = this.watchList.slice(this.start,this.noOfElement)
     this.start = this.noOfElement;
   }
@@ -54,5 +56,16 @@ export class WatchPage {
 
   onClickAlert(){
    this.presentToast("Alert has set successfully")
+  }
+  filterList(event){
+
+  }
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: AddWatchComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 }

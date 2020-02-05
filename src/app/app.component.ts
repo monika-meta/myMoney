@@ -12,7 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Watch',
+      title: 'Watch List',
       url: '/watch',
       // icon: 'home'
     }

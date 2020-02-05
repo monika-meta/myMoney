@@ -8,10 +8,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { AddWatchComponent } from './add-watch/add-watch.component'
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, AddWatchComponent],
+  entryComponents: [AddWatchComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
