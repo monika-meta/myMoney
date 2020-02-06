@@ -8,9 +8,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AddWatchComponent } from './add-watch/add-watch.component'
+import { AddWatchComponent } from './add-watch/add-watch.component';
+import { HomepagePipe } from './homepage.pipe'
 @NgModule({
-  declarations: [AppComponent, AddWatchComponent],
+  declarations: [AppComponent, AddWatchComponent, HomepagePipe],
   entryComponents: [AddWatchComponent],
   imports: [
     BrowserModule,

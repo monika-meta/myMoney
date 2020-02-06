@@ -3,17 +3,21 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-header>
         <ion-toolbar>
-          <ion-title>Menu</ion-title>
+          <div class="profile">
+            <div>
+              <img class="logo_pd" src="../assets/icon/logo.png" />
+            </div>
+            <img class="profile-picture" src="http://ionicframework.com/img/docs/mcfly.jpg" />
+            <h3 class="name">Thronester</h3>
+          </div>
         </ion-toolbar>
+        
       </ion-header>
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
+            <ion-item menu-close ui-sref="app.home" [routerLink]="[p.url]">
+              {{p.title}}
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
