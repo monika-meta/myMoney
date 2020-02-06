@@ -1,26 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button>
-        <img src="../../assets/icon/menuicon.svg" />
+      <ion-menu-button >
       </ion-menu-button>
     </ion-buttons>
     <ion-title class="custom-header" text-left>
-      WatchList
+      Watch List
     </ion-title>
   </ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-searchbar
-    border-color-green
-    showCancelButton="never"
-    placeholder="Search Company"
-  ></ion-searchbar>
+  <ion-searchbar border-color-green showCancelButton="never" placeholder="Search Company"
+    (ioninput)="filterList($event)"></ion-searchbar>
   <ion-grid class="ion-no-margin ion-no-padding stock-info custom-padding">
-    <ion-row  class="bg-dark">
-      <ion-col >
+    <ion-row class="bg-dark">
+      <ion-col>
         <div class="first-item-heading">52 Week High Low</div>
-      </ion-col >
+      </ion-col>
       <ion-col text-center>
         MRP/DP
       </ion-col>
@@ -32,67 +26,57 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-list>
-    
-    <!-- <ion-item-sliding *ngFor="let item of items;  let index =index;
-    let isOdd=odd;
-    let isEven=even">
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-        <ion-item-option color="danger" (click)="share(item)">Share</ion-item-option>
-      </ion-item-options>
-  
-      <ion-item>
-        <ion-label>Item Options</ion-label>
+</ion-header>
+<ion-content>
+  <ion-list lines="none" class="ion-no-margin ion-no-padding">
+    <ion-item-sliding *ngFor="let item of items;  let index =index;
+       let isOdd=odd;
+       let isEven=even;" class="bg-green">
+      <ion-item no-padding>
+        <ion-grid [class.odd]="isOdd" [class.even]="isEven">
+          <ion-row>
+            <ion-col>
+              <div class="c-name">{{item.company}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-margin ion-no-padding">
+              <div class="first-item">{{item.weekHigh}}/{{item.weekLow}}
+              </div>
+            </ion-col>
+            <ion-col class="ion-no-margin ion-no-padding" text-center>
+              <ion-icon ios="ios-lock" class="custom-lock" md="md-lock"></ion-icon>
+            </ion-col>
+            <ion-col class="ion-no-margin ion-no-padding" text-center>
+              {{item.currentPrice}} (<span [class.success]="item.currentPricePercentage > 0"
+                [class.danger]="item.currentPricePercentage < 0">{{item.currentPricePercentage}}% </span>)
+            </ion-col>
+            <ion-col class="ion-no-margin ion-no-padding" text-center>
+              <ion-icon class="custom-lock" ios="ios-lock" md="md-lock"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
-  
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+      <ion-item-options class="slide-items" side="end">
+        <ion-item-option color="success" (click)="onClickAlert()">
+          <ion-icon name="notifications"></ion-icon>
+          <div>Set Trigger</div>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="deleteItem(index)">
+          <ion-icon name="trash"></ion-icon>
+          <div>Remove</div>
+        </ion-item-option>
       </ion-item-options>
-    </ion-item-sliding> -->
-    <ion-list lines="none" class="ion-no-margin ion-no-padding">
-      <ion-item-sliding *ngFor="let item of items;  let index =index; let isOdd=odd;let isEven=even"   class="bg-green" >
-        <ion-item>
-         <ion-grid [class.odd]="isOdd" 
-         [class.even]="isEven">
-           <ion-row>
-             <ion-col>
-               <div class="c-name">{{item.company}}</div>
-             </ion-col></ion-row>
-           <ion-row>
-             <ion-col class="ion-no-margin ion-no-padding">
-               <div class="first-item">{{item.weekHigh}}/<div>{{item.weekLow}}</div></div>
-             </ion-col>
-             <ion-col class="ion-no-margin ion-no-padding" text-center>
-               -
-             </ion-col>
-             <ion-col class="ion-no-margin ion-no-padding" text-center >
-               {{item.currentPrice}}
-             </ion-col>
-             <ion-col class="ion-no-margin ion-no-padding" text-center>
-               -
-             </ion-col>
-           </ion-row>
-         </ion-grid>
-        </ion-item>
-        <ion-item-options class="slide-items" side="end">
-         <ion-item-option color="success" (click)="unread(item)"><ion-icon name="notifications"></ion-icon><div>Set Trigger</div></ion-item-option>
-         <ion-item-option color="danger" (click)="unread(item)"><ion-icon name="trash"></ion-icon><div>Remove</div></ion-item-option>
-       </ion-item-options>
-       </ion-item-sliding>
-      </ion-list>
-
+    </ion-item-sliding>
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Loading more data...">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
-    <!-- fab placed to the bottom end -->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentPopover()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

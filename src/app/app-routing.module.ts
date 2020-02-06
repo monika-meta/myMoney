@@ -4,9 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'watch',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
+  { path: 'home', loadChildren: './list/list.module#ListPageModule' },
   {
     path: 'watch',
     loadChildren: () => import('./watch/watch.module').then(m => m.WatchPageModule)

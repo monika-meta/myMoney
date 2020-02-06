@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { WatchPage } from './watch.page';
+import { AddWatchComponent } from '../add-watch/add-watch.component'
 
 @NgModule({
   imports: [
