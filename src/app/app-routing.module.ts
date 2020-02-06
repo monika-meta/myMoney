@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'watch',
     loadChildren: () => import('./watch/watch.module').then(m => m.WatchPageModule)
-  },
+  }
 
 ];
 

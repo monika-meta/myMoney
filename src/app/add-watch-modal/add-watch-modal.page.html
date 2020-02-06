@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-row>
+    <ion-col>
+      <div>
+        <ion-icon (click)="closeModal()" name="arrow-back" class="custom-arrow"></ion-icon>
+  
+        <h3 class=" text-green"><span>Add to Watch List</span></h3>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content class="min-h">
+  <ion-searchbar border-color-green showCancelButton="never" placeholder="Search Company" (keyup.enter)="update()"
+  (blur)="update()"
+    (ioninput)="filterList($event)"></ion-searchbar>
+  <ion-list lines="none" class="ion-no-margin ion-no-padding">
+    <ion-item (click)="onSelectData(item)" *ngFor="let item of items;  let index =index;
+       let isOdd=odd;
+       let isEven=even;" class="bg-green">
+        <ion-grid [class.odd]="isOdd" [class.even]="isEven">
+          <ion-row>
+            <ion-col>
+              <div class="c-name">{{item.company}}</div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

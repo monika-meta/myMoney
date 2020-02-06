@@ -9,14 +9,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddWatchComponent } from './add-watch/add-watch.component';
-import { HomepagePipe } from './homepage.pipe'
+import { HomepagePipe } from './homepage.pipe';
+import { AddWatchModalPageModule } from './add-watch-modal/add-watch-modal.module';
+
 @NgModule({
   declarations: [AppComponent, AddWatchComponent, HomepagePipe],
   entryComponents: [AddWatchComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AddWatchModalPageModule
   ],
   providers: [
     StatusBar,

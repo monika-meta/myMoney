@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="heightsm">
     <ion-buttons slot="start">
       <ion-menu-button >
       </ion-menu-button>
@@ -8,12 +8,12 @@
       Watch List
     </ion-title>
   </ion-toolbar>
-  <ion-searchbar border-color-green showCancelButton="never" placeholder="Search Company"
-    (ioninput)="filterList($event)"></ion-searchbar>
+  <ion-searchbar border-color-green showCancelButton="never" placeholder="Search watch list"
+    (ioninput)="filterList($event)" inputmode="search"></ion-searchbar>
   <ion-grid class="ion-no-margin ion-no-padding stock-info custom-padding">
     <ion-row class="bg-dark">
       <ion-col>
-        <div class="first-item-heading">52 Week High Low</div>
+        <div class="first-item-heading">52 Week High/Low</div>
       </ion-col>
       <ion-col text-center>
         MRP/DP
@@ -22,7 +22,7 @@
         CMP/Change
       </ion-col>
       <ion-col text-center>
-        Right Allocation
+        Right Stock
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -57,10 +57,10 @@
           </ion-row>
         </ion-grid>
       </ion-item>
-      <ion-item-options class="slide-items" side="end">
+      <ion-item-options class="slide-items" side="start">
         <ion-item-option color="success" (click)="onClickAlert()">
           <ion-icon name="notifications"></ion-icon>
-          <div>Set Trigger</div>
+          <div>Set Alert</div>
         </ion-item-option>
         <ion-item-option color="danger" (click)="deleteItem(index)">
           <ion-icon name="trash"></ion-icon>
@@ -74,7 +74,7 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
   <!-- fab placed to the bottom end -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentPopover()">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentModal()">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

@@ -4,6 +4,8 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { AddWatchComponent } from '../add-watch/add-watch.component';
+import { ModalController } from '@ionic/angular';
+import { AddWatchModalPage } from '../add-watch-modal/add-watch-modal.page';
 
 @Component({
   selector: 'app-watch',
@@ -17,9 +19,15 @@ export class WatchPage {
   private selectedItem: any;
   public items  = [];
   watchList = watchData.watch;
-  constructor(public toastController: ToastController, public popoverController: PopoverController) {
+  constructor(public toastController: ToastController, public popoverController: PopoverController, public modalController: ModalController) {
     this.items = this.watchList.slice(this.start,this.noOfElement)
     this.start = this.noOfElement;
+  }
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: AddWatchModalPage
+    });
+    return await modal.present();
   }
 
   loadData(event) {
