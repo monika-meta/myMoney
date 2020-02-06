@@ -59,7 +59,6 @@ ion-header {
         font-size: 13px;
         font-weight: 600;
         border-radius: 10px;
-        white-space: nowrap;
 
 
 
@@ -107,15 +106,30 @@ ion-item {
     --ion-safe-area-right: 0;
   }
   .danger{
-      color: #ed0000;
-      display: inline-block;
+      color: #f00;
   }
   .success{
-      color:  #00a651
-      ;
-      display: inline-block;
-
+      color:#0f0;
   }
-  .heightsm{
-      height: 42px !important;
+  .min-h{
+      min-height: 100px;
+  }
+  .custom-arrow{
+    height: 30px;
+    width: 30px;
+    color: #96C668;
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 16px;
+  }
+  .text-green{
+    color: #96C668;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0;
+    margin: 13px 0 2px;
+    span{
+        padding-left: 68px;
+    }
   }

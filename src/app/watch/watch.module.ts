@@ -5,13 +5,12 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { WatchPage } from './watch.page';
-import { AddWatchComponent } from '../add-watch/add-watch.component'
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    
     RouterModule.forChild([
       {
         path: '',
@@ -19,6 +18,7 @@ import { AddWatchComponent } from '../add-watch/add-watch.component'
       }
     ])
   ],
+  entryComponents: [],
   declarations: [WatchPage]
 })
 export class WatchPageModule {}
