@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ChartDisplayPage } from '../chart-display/chart-display.page';
 
 @Component({
   selector: 'app-company-overview',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyOverviewPage implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController) {}
 
   ngOnInit() {
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ChartDisplayPage,
+      cssClass: "modal-fullscreen"
+    });
+    return await modal.present();
   }
 
 }

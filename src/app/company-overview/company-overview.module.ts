@@ -15,6 +15,7 @@ import { CompanyOverviewPage } from './company-overview.page';
     IonicModule,
     CompanyOverviewPageRoutingModule
   ],
-  declarations: [CompanyOverviewPage]
+  declarations: [CompanyOverviewPage],
+  entryComponents: [CompanyOverviewPage]
 })
 export class CompanyOverviewPageModule {}

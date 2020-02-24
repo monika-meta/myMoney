@@ -15,6 +15,7 @@ import { CompanyDecisionMakerPage } from './company-decision-maker.page';
     IonicModule,
     CompanyDecisionMakerPageRoutingModule
   ],
-  declarations: [CompanyDecisionMakerPage]
+  declarations: [CompanyDecisionMakerPage],
+  entryComponents: [CompanyDecisionMakerPage]
 })
 export class CompanyDecisionMakerPageModule {}

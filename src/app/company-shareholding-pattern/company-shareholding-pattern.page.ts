@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_material from "@amcharts/amcharts4/themes/material";
 
 @Component({
   selector: 'app-company-shareholding-pattern',
@@ -7,9 +10,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyShareholdingPatternPage implements OnInit {
 
-  constructor() { }
+  private chart: am4charts.PieChart;
+
+  constructor( private zone: NgZone ) { }
 
   ngOnInit() {
   }
 
+  ngAfterViewInit(){
+    this.zone.runOutsideAngular(() => {
+      am4core.useTheme(am4themes_material);
+      
+      let chart = am4core.create("piechartdiv", am4charts.PieChart);
+
+      let pieSeries = chart.series.push(new am4charts.PieSeries());
+      pieSeries.dataFields.value = "percent";
+      pieSeries.dataFields.category = "label";
+
+      pieSeries.labels.template.disabled = true;
+      pieSeries.ticks.template.disabled = true;
+
+      // Add a legend
+      chart.legend = new am4charts.Legend();
+      chart.legend.position = "bottom";
+
+      chart.data = [{
+        label: "Promoters",
+        percent: 50.03
+      },
+      {
+        label: "Institutions",
+        percent: 38.48
+      },
+      {
+        label: "Non-Institutions",
+        percent: 11.49
+      }];
+
+      this.chart = chart;
+    });
+  }
+
+  ngOnDestroy() {
+    this.zone.runOutsideAngular(() => {
+      if (this.chart) {
+        this.chart.dispose();
+      }
+    });
+  }
 }

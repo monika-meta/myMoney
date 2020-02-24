@@ -15,6 +15,7 @@ import { CompanyMyAssessmentPage } from './company-my-assessment.page';
     IonicModule,
     CompanyMyAssessmentPageRoutingModule
   ],
-  declarations: [CompanyMyAssessmentPage]
+  declarations: [CompanyMyAssessmentPage],
+  entryComponents: [CompanyMyAssessmentPage]
 })
 export class CompanyMyAssessmentPageModule {}

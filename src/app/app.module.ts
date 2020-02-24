@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AddWatchComponent } from './add-watch/add-watch.component';
 import { HomepagePipe } from './homepage.pipe';
 import { AddWatchModalPageModule } from './add-watch-modal/add-watch-modal.module';
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { ChartDisplayPageModule } from './chart-display/chart-display.module';
 
 @NgModule({
   declarations: [AppComponent, AddWatchComponent, HomepagePipe],
@@ -19,7 +21,9 @@ import { AddWatchModalPageModule } from './add-watch-modal/add-watch-modal.modul
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AddWatchModalPageModule
+    AddWatchModalPageModule,
+    SuperTabsModule.forRoot(),
+    ChartDisplayPageModule
   ],
   providers: [
     StatusBar,

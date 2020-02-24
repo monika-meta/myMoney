@@ -15,6 +15,7 @@ import { CompanyAboutPage } from './company-about.page';
     IonicModule,
     CompanyAboutPageRoutingModule
   ],
-  declarations: [CompanyAboutPage]
+  declarations: [CompanyAboutPage],
+  entryComponents: [CompanyAboutPage]
 })
 export class CompanyAboutPageModule {}

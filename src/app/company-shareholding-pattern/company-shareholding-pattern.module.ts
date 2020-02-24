@@ -15,6 +15,7 @@ import { CompanyShareholdingPatternPage } from './company-shareholding-pattern.p
     IonicModule,
     CompanyShareholdingPatternPageRoutingModule
   ],
-  declarations: [CompanyShareholdingPatternPage]
+  declarations: [CompanyShareholdingPatternPage],
+  entryComponents: [CompanyShareholdingPatternPage]
 })
 export class CompanyShareholdingPatternPageModule {}

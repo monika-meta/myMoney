@@ -39,7 +39,12 @@ const routes: Routes = [
   {
     path: 'company-about',
     loadChildren: () => import('./company-about/company-about.module').then( m => m.CompanyAboutPageModule)
+  },
+  {
+    path: 'chart-display',
+    loadChildren: () => import('./chart-display/chart-display.module').then( m => m.ChartDisplayPageModule)
   }
+
 
 ];
 

@@ -15,6 +15,7 @@ import { CompanyNewsPage } from './company-news.page';
     IonicModule,
     CompanyNewsPageRoutingModule
   ],
-  declarations: [CompanyNewsPage]
+  declarations: [CompanyNewsPage],
+  entryComponents: [CompanyNewsPage]
 })
 export class CompanyNewsPageModule {}
