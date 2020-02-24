@@ -36,7 +36,12 @@
         <ion-grid [class.odd]="isOdd" [class.even]="isEven">
           <ion-row>
             <ion-col>
-              <div class="c-name">{{item.company}}</div>
+              <div *ngIf="item.company == 'Reliance Industries'">
+                <div class="c-name"><a [routerLink]="['/company-info']">{{item.company}}</a></div>
+              </div>
+              <div *ngIf="item.company != 'Reliance Industries'">
+                <div class="c-name">{{item.company}}</div>
+              </div>
             </ion-col>
           </ion-row>
           <ion-row>

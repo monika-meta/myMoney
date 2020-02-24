@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -21,6 +21,7 @@ import { ChartDisplayPageModule } from './chart-display/chart-display.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    RouterModule,
     AddWatchModalPageModule,
     SuperTabsModule.forRoot(),
     ChartDisplayPageModule

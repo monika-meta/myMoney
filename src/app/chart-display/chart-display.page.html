@@ -9,20 +9,30 @@
 
 <ion-content>
   <div id="container">
+    <ion-grid id="controls">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>From:</ion-label>
+            <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="fromfield" class="amcharts-input"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>To:</ion-label>
+            <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="tofield" class="amcharts-input"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <button id="b1m" class="amcharts-input">1m</button>
+          <button id="b3m" class="amcharts-input">3m</button>
+          <button id="b6m" class="amcharts-input">6m</button>
+          <button id="b1y" class="amcharts-input">1y</button>
+          <button id="bytd" class="amcharts-input">YTD</button>
+          <button id="bmax" class="amcharts-input">MAX</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <div id="chartdiv" style="width: 100%; height: 600px;"></div>
-    <div id="controls" style="width: 100%; overflow: hidden;">
-      <div style="float: left; margin-left: 15px;">
-        From: <input type="text" id="fromfield" class="amcharts-input" />
-        To: <input type="text" id="tofield" class="amcharts-input" />
-      </div>
-      <div style="float: right; margin-right: 15px;">
-        <button id="b1m" class="amcharts-input">1m</button>
-        <button id="b3m" class="amcharts-input">3m</button>
-        <button id="b6m" class="amcharts-input">6m</button>
-        <button id="b1y" class="amcharts-input">1y</button>
-        <button id="bytd" class="amcharts-input">YTD</button>
-        <button id="bmax" class="amcharts-input">MAX</button>
-      </div>
-    </div>
   </div>
 </ion-content>

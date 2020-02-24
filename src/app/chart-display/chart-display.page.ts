@@ -48,14 +48,14 @@ export class ChartDisplayPage implements OnInit {
       dateAxis.minHeight = 30;
       
       dateAxis.groupData = true;
-      dateAxis.minZoomCount = 5;
+      //dateAxis.minZoomCount = 1;
       
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.tooltip.disabled = true;
       valueAxis.zIndex = 1;
       valueAxis.renderer.baseGrid.disabled = true;
       // height of axis
-      valueAxis.height = am4core.percent(65);
+      valueAxis.height = am4core.percent(85);
       
       valueAxis.renderer.gridContainer.background.fill = am4core.color("#000000");
       valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
@@ -133,8 +133,8 @@ export class ChartDisplayPage implements OnInit {
       series200.name = "200 DMA: ";
       series200.legendSettings.valueText = "{valueY.value}";
       series200.defaultState.transitionDuration = 0;
-      series200.fill = am4core.color("brown");
-      series200.stroke = am4core.color("brown");
+      series200.fill = am4core.color("orange");
+      series200.stroke = am4core.color("orange");
       series200.hidden = true;
       
       chart.cursor = new am4charts.XYCursor();
@@ -147,14 +147,7 @@ export class ChartDisplayPage implements OnInit {
       //marker.cornerRadius(12, 12, 12, 12);
       marker.width = 15;
       marker.height = 15;
-      
-      let scrollbarX = new am4charts.XYChartScrollbar();
-      scrollbarX.series.push(series);
-      //scrollbarX.series.push(series1);
-      scrollbarX.marginBottom = 20;
-      scrollbarX.scrollbarChart.xAxes.getIndex(0).minHeight = undefined;
-      chart.scrollbarX = scrollbarX;
-      
+    
       
       /**
        * Setting up external controls
