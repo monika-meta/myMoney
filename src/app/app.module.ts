@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HTTP } from '@ionic-native/http/ngx';
+import { HttpClientModule } from '@angular/common/http';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -21,6 +23,7 @@ import { ChartDisplayPageModule } from './chart-display/chart-display.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     RouterModule,
     AddWatchModalPageModule,
     SuperTabsModule.forRoot(),
@@ -29,7 +32,8 @@ import { ChartDisplayPageModule } from './chart-display/chart-display.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HTTP
   ],
   bootstrap: [AppComponent]
 })
