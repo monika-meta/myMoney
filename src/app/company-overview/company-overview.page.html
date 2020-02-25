@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Company Overview</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content padding>
-  <ion-button color="secondary" (click)="presentModal()">Display Chart</ion-button>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary"  class="disp-btn" (click)="presentModal()">
+      <ion-icon name="paper"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="overview-data">
+    <h3>Company Overview</h3>
+  </div>
 </ion-content>
