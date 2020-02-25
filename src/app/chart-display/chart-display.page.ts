@@ -1,12 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ModalController, LoadingController, NavController } from '@ionic/angular';
-import { HTTP } from '@ionic-native/http/ngx';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_material from "@amcharts/amcharts4/themes/material";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { from } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-chart-display',
@@ -17,7 +14,7 @@ export class ChartDisplayPage implements OnInit {
 
   private chart: am4charts.XYChart;
 
-  constructor(private http: HttpClient, private nativeHttp: HTTP, public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController ) { }
+  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController ) { }
 
   ngOnInit() {
   }
@@ -26,16 +23,16 @@ export class ChartDisplayPage implements OnInit {
     this.modalController.dismiss({
       'dismissed': true
     });
-    screen.orientation.unlock();
+    //screen.orientation.unlock();
   }
 
   async ngAfterViewInit(){
     const loading = await this.loadingController.create({
       message: 'Please wait...',
-      duration: 3000
+      duration: 2500
     });
     this.zone.runOutsideAngular(async () => {
-      await screen.orientation.lock("landscape");
+      //await screen.orientation.lock("landscape");
       await loading.present();
       am4core.unuseTheme(am4themes_material);
       am4core.useTheme(am4themes_animated);
@@ -75,22 +72,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis.renderer.fontSize = "0.8em";
       
       let series = chart.series.push(new am4charts.LineSeries());
-      let nativeCall = this.nativeHttp.get('https://www.moneyworks4me.com/company/chart/html-chart-data?bsecode=500325&date=20200224111435&_='+ (new Date()).getTime(), {}, {
-        'Content-Type': 'text/csv'
-      });
-      
-      from(nativeCall).pipe().subscribe(data => {
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-        series.dataSource.processData(data.data, "CSV");
-      },
-      error => {
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
-      });
+      series.dataSource.url = "assets/data/reliance/chartdata.csv";
       series.dataSource.parser = new am4core.CSVParser();
       (<am4core.ICSVOptions>series.dataSource.parser.options).useColumnNames = false;
       
@@ -120,22 +102,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
       
       let series2 = chart.series.push(new am4charts.ColumnSeries());
-      let nativeCall2 = this.nativeHttp.get('https://www.moneyworks4me.com/company/chart/html-chart-data?bsecode=500325&date=20200224111435&_='+ (new Date()).getTime(), {}, {
-        'Content-Type': 'text/csv'
-      });
-      
-      from(nativeCall2).pipe().subscribe(data => {
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-        series2.dataSource.processData(data.data, "CSV");
-      },
-      error => {
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
-      });
+      series2.dataSource.url = "assets/data/reliance/chartdata.csv";
       series2.dataSource.parser = new am4core.CSVParser();
       (<am4core.ICSVOptions>series2.dataSource.parser.options).useColumnNames = false;
       series2.dataFields.dateX = "col0";
@@ -148,23 +115,7 @@ export class ChartDisplayPage implements OnInit {
       series2.defaultState.transitionDuration = 0;
 
       let series50 = chart.series.push(new am4charts.LineSeries());
-      let nativeCall50 = this.nativeHttp.get('https://www.moneyworks4me.com/company/chart/averagedata/days/50/date/20200224/bsecode/500325', {}, {
-        'Content-Type': 'text/csv'
-      });
-      
-      from(nativeCall50).pipe().subscribe(data => {
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-        series50.dataSource.processData(data.data, "CSV");
-      },
-      error => {
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
-      });
-      //series50.dataSource.url = "https://www.moneyworks4me.com/company/chart/averagedata/days/50/date/20200224/bsecode/500325";
+      series50.dataSource.url = "assets/data/reliance/50-dma.csv";
       series50.dataSource.parser = new am4core.CSVParser();
       (<am4core.ICSVOptions>series50.dataSource.parser.options).useColumnNames = false;
       (<am4core.ICSVOptions>series50.dataSource.parser.options).reverse = true;
@@ -179,23 +130,7 @@ export class ChartDisplayPage implements OnInit {
       series50.fillOpacity = 0;
 
       let series200 = chart.series.push(new am4charts.LineSeries());
-      let nativeCall200 = this.nativeHttp.get('https://www.moneyworks4me.com/company/chart/averagedata/days/200/date/20200224/bsecode/500325', {}, {
-        'Content-Type': 'text/csv'
-      });
-      
-      from(nativeCall200).pipe().subscribe(data => {
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-        series200.dataSource.processData(data.data, "CSV");
-      },
-      error => {
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
-      });
-      //series200.dataSource.url = "https://www.moneyworks4me.com/company/chart/averagedata/days/200/date/20200224/bsecode/500325";
+      series200.dataSource.url = "assets/data/reliance/200-dma.csv";
       series200.dataSource.parser = new am4core.CSVParser();
       (<am4core.ICSVOptions>series200.dataSource.parser.options).useColumnNames = false;
       (<am4core.ICSVOptions>series200.dataSource.parser.options).reverse = true;
