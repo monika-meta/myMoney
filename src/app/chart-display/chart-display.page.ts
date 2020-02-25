@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { ModalController, LoadingController, NavController } from '@ionic/angular';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { ModalController, LoadingController, NavController, Platform } from '@ionic/angular';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_material from "@amcharts/amcharts4/themes/material";
@@ -14,7 +15,7 @@ export class ChartDisplayPage implements OnInit {
 
   private chart: am4charts.XYChart;
 
-  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController ) { }
+  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { }
 
   ngOnInit() {
   }
@@ -23,16 +24,20 @@ export class ChartDisplayPage implements OnInit {
     this.modalController.dismiss({
       'dismissed': true
     });
-    //screen.orientation.unlock();
   }
 
   async ngAfterViewInit(){
+    this.platform.ready().then(()=>{
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    },
+    error => {
+      console.log(error);
+    });
     const loading = await this.loadingController.create({
       message: 'Please wait...',
       duration: 2500
     });
     this.zone.runOutsideAngular(async () => {
-      //await screen.orientation.lock("landscape");
       await loading.present();
       am4core.unuseTheme(am4themes_material);
       am4core.useTheme(am4themes_animated);
@@ -258,6 +263,10 @@ export class ChartDisplayPage implements OnInit {
         this.chart.dispose();
       }
     });
+  }
+
+  ionViewWillUnload(){
+    this.screenOrientation.unlock();
   }
 
 }
