@@ -3,7 +3,6 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { ModalController, LoadingController, NavController, Platform } from '@ionic/angular';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_material from "@amcharts/amcharts4/themes/material";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 @Component({
@@ -21,7 +20,7 @@ export class ChartDisplayPage implements OnInit {
   chartHeight = (this.deviceHeight)/3 + "px";
 
   constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
-    this.duration = "MAX";
+    this.duration = "1m";
    }
 
   ngOnInit() {
@@ -46,7 +45,6 @@ export class ChartDisplayPage implements OnInit {
     });
     this.zone.runOutsideAngular(async () => {
       await loading.present();
-      am4core.unuseTheme(am4themes_material);
       am4core.useTheme(am4themes_animated);
       let chart = am4core.create("chartdiv", am4charts.XYChart);
       chart.padding(0, 15, 0, 15);
@@ -91,7 +89,7 @@ export class ChartDisplayPage implements OnInit {
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
       //series.tooltipText = "{valueY.value}";
-      series.name = "Reliance Industries - Closing Price: ";
+      series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
       series.defaultState.transitionDuration = 0;
       series.stroke = am4core.color("#0000ff");
@@ -169,16 +167,22 @@ export class ChartDisplayPage implements OnInit {
 
       chart.preloader.disabled = true;
       
+      let chartEvent = chart.events.onAll(function () {
+        let max = dateAxis.groupMax["day1"];
+        let date = new Date(max);
+        am4core.time.add(date, "month", -1);
+        zoomToDates(date);
+      });
+      
       /**
        * Setting up external controls
        */
       
       // Date format to be used in input fields
       let inputFieldFormat = "yyyy-MM-dd";
-      let a = document.getElementById("duration-select");
       document.getElementById("duration-select").addEventListener("ionChange", function($event) {
-        console.log("*******");
-        console.log("-----"+(<HTMLIonSelectElement>$event.target).value);
+        this.duration = (<HTMLIonSelectElement>event.target).value;
+        chartEvent.dispose();
         if ((<HTMLIonSelectElement>event.target).value === '1m') {
           let max = dateAxis.groupMax["day1"];
           let date = new Date(max);
