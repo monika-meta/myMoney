@@ -7,3 +7,19 @@
        
       
 }
+.overview-data{
+    div{
+        padding:5px;
+        border-bottom: 1px solid #444;
+        strong{    font-size: 16px;
+        }
+        span{
+            font-size: 11px;
+            display: block;
+            margin-bottom: 3px;
+            color: #fff;
+            text-transform: uppercase;
+        
+        }
+    }
+}

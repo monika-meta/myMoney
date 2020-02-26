@@ -7,3 +7,32 @@
 .custom-margin{
     margin:10px;
 }
+.current-price{
+    background-color: #2f2f2f;
+    padding:10px;
+    color: #fff;
+    h3{
+        margin:0;
+        font-size:24px;
+        span{
+            margin-left: 10px;
+        }
+    }
+    .down{
+        color: #f00;
+    }
+    .diff-price{
+        font-size:18px;
+        margin-left:5px;
+    }
+    p{
+        padding-left: 32px;
+        font-size: 12px;
+        color: #ccc;
+        margin-top: 5px;
+        span{
+            margin-left: 10px;
+            vertical-align: top;
+        }
+    }
+}
