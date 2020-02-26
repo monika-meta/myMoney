@@ -14,8 +14,15 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 export class ChartDisplayPage implements OnInit {
 
   private chart: am4charts.XYChart;
+  duration: any;
+  ratio = window.devicePixelRatio || 1;
+  deviceWidth = screen.width * this.ratio;
+  deviceHeight = screen.height * this.ratio;
+  chartHeight = (this.deviceHeight)/3 + "px";
 
-  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { }
+  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
+    this.duration = "MAX";
+   }
 
   ngOnInit() {
   }
@@ -168,46 +175,45 @@ export class ChartDisplayPage implements OnInit {
       
       // Date format to be used in input fields
       let inputFieldFormat = "yyyy-MM-dd";
-      
-      document.getElementById("b1m").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -1);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("b3m").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -3);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("b6m").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -6);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("b1y").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "year", -1);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("bytd").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.round(date, "year", 1);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("bmax").addEventListener("click", function() {
-        let min = dateAxis.groupMin["day1"];
-        let date = new Date(min);
-        zoomToDates(date);
+      let a = document.getElementById("duration-select");
+      document.getElementById("duration-select").addEventListener("ionChange", function($event) {
+        console.log("*******");
+        console.log("-----"+(<HTMLIonSelectElement>$event.target).value);
+        if ((<HTMLIonSelectElement>event.target).value === '1m') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "month", -1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '3m') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "month", -3);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '6m') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "month", -6);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '1y') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "year", -1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === 'YTD') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.round(date, "year", 1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === 'MAX') {
+          let min = dateAxis.groupMin["day1"];
+          let date = new Date(min);
+          zoomToDates(date);
+        }
       });
       
       dateAxis.events.on("selectionextremeschanged", function() {
