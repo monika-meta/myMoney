@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_material from "@amcharts/amcharts4/themes/material";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 @Component({
   selector: 'app-company-shareholding-pattern',
@@ -19,7 +19,7 @@ export class CompanyShareholdingPatternPage implements OnInit {
 
   ngAfterViewInit(){
     this.zone.runOutsideAngular(() => {
-      am4core.useTheme(am4themes_material);
+      am4core.useTheme(am4themes_animated);
       
       let chart = am4core.create("piechartdiv", am4charts.PieChart);
 
@@ -33,6 +33,9 @@ export class CompanyShareholdingPatternPage implements OnInit {
       // Add a legend
       chart.legend = new am4charts.Legend();
       chart.legend.position = "bottom";
+      chart.legend.labels.template.text = "[bold {color}]{name}[/]";
+      chart.legend.valueLabels.template.text = "[{color}]{value.value}%";
+      chart.legend.itemContainers.template.togglable = false;
 
       chart.data = [{
         label: "Promoters",
