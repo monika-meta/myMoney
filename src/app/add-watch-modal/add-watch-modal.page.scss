@@ -1,5 +1,7 @@
 ion-header {
-    --border-color: transparent;
+    --border-color: transparent;   background-color: #fff;
+}ion-content{
+    --background: #fff;
 }
 
 .custom-header {

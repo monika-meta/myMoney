@@ -7,12 +7,12 @@
         <h3 class=" text-green"><span>Add to Watch List</span></h3>
       </div>
     </ion-col>
-  </ion-row>
-</ion-header>
-<ion-content class="min-h">
-  <ion-searchbar border-color-green showCancelButton="never" placeholder="Search Company" (keyup.enter)="update()"
+  </ion-row><ion-searchbar color="light" border-color-green showCancelButton="never" placeholder="Search Company" (keyup.enter)="update()"
   (blur)="update()"
     (ioninput)="filterList($event)"></ion-searchbar>
+</ion-header>
+<ion-content class="min-h">
+  
   <ion-list lines="none" class="ion-no-margin ion-no-padding">
     <ion-item (click)="onSelectData(item)" *ngFor="let item of items;  let index =index;
        let isOdd=odd;
