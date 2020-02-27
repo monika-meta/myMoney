@@ -18,7 +18,7 @@ export class ChartDisplayPage implements OnInit {
   ratio = window.devicePixelRatio || 1;
   deviceWidth = screen.width * this.ratio;
   deviceHeight = screen.height * this.ratio;
-  chartHeight = (this.deviceHeight)/3 + "px";
+  chartHeight = (this.deviceHeight)/4 + "px";
 
   constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
     this.duration = "1m";
@@ -51,6 +51,7 @@ export class ChartDisplayPage implements OnInit {
       chart.padding(0, 15, 0, 15);
       
       chart.leftAxesContainer.layout = "vertical";
+      chart.preloader.disabled = true;
 
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
@@ -72,7 +73,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis.zIndex = 1;
       valueAxis.renderer.baseGrid.disabled = true;
       // height of axis
-      valueAxis.height = am4core.percent(50);
+      valueAxis.height = am4core.percent(40);
       
       valueAxis.renderer.gridContainer.background.fill = am4core.color("#000000");
       valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
@@ -89,12 +90,13 @@ export class ChartDisplayPage implements OnInit {
       
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
-      //series.tooltipText = "{valueY.value}";
+      series.tooltipText = "Closing Price: {valueY.value}";
       series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
       series.defaultState.transitionDuration = 0;
       series.stroke = am4core.color("#0000ff");
       series.fillOpacity = 0.4;
+      series.hiddenInLegend = true;
       
       let valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis2.tooltip.disabled = true;
@@ -168,11 +170,9 @@ export class ChartDisplayPage implements OnInit {
       marker.width = 10;
       marker.height = 10;
 
-      chart.preloader.disabled = true;
-
-      dateAxis.showOnInit = false;
+      //dateAxis.showOnInit = false;
       
-      chart.events.on("transitionended", function () {
+      chart.events.on("propertychanged", function () {
         let max = dateAxis.groupMax["day1"];
         let date = new Date(max);
         am4core.time.add(date, "month", -1);
