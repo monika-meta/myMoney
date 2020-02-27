@@ -10,13 +10,13 @@
         </ion-col>
         <ion-col>
           <ion-select [(ngModel)]="duration" [placeholder]="Duration" interface="popover" id="duration-select" class="amcharts-input">
-            <ion-select-option value="1m" [selected]="duration == '1m'">1 Month</ion-select-option>
+            <ion-select-option value="1m">1 Month</ion-select-option>
             <ion-select-option value="3m">3 Months</ion-select-option>
             <ion-select-option value="6m">6 Months</ion-select-option>
             <ion-select-option value="1y">1 Year</ion-select-option>
-            <ion-select-option value="3y">3 Year</ion-select-option>
+            <ion-select-option value="3y">3 Years</ion-select-option>
             <ion-select-option value="YTD">Year To Date</ion-select-option>
-            <ion-select-option value="MAX">Maximum</ion-select-option>
+            <ion-select-option value="MAX" [selected]="duration == 'MAX'">Maximum</ion-select-option>
           </ion-select>
         </ion-col>
       </ion-row>
