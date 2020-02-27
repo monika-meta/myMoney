@@ -3,8 +3,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { ModalController, LoadingController, NavController, Platform } from '@ionic/angular';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_material from "@amcharts/amcharts4/themes/material";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-chart-display',
@@ -14,8 +14,15 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 export class ChartDisplayPage implements OnInit {
 
   private chart: am4charts.XYChart;
+  duration: any;
+  ratio = window.devicePixelRatio || 1;
+  deviceWidth = screen.width * this.ratio;
+  deviceHeight = screen.height * this.ratio;
+  chartHeight = (this.deviceHeight)/3 + "px";
 
-  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { }
+  constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
+    this.duration = "1m";
+   }
 
   ngOnInit() {
   }
@@ -39,10 +46,9 @@ export class ChartDisplayPage implements OnInit {
     });
     this.zone.runOutsideAngular(async () => {
       await loading.present();
-      am4core.unuseTheme(am4themes_material);
       am4core.useTheme(am4themes_animated);
       let chart = am4core.create("chartdiv", am4charts.XYChart);
-      chart.padding(0, 15, 0, 15);
+      chart.padding(20, 0, 0, 0);
       
       chart.leftAxesContainer.layout = "vertical";
 
@@ -83,8 +89,8 @@ export class ChartDisplayPage implements OnInit {
       
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
-      //series.tooltipText = "{valueY.value}";
-      series.name = "Reliance Industries - Closing Price: ";
+      series.tooltipText = "Closing Price: {valueY.value}";
+      series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
       series.defaultState.transitionDuration = 0;
       series.stroke = am4core.color("#0000ff");
@@ -113,7 +119,7 @@ export class ChartDisplayPage implements OnInit {
       series2.dataFields.dateX = "col0";
       series2.dataFields.valueY = "col1";
       series2.yAxis = valueAxis2;
-      //series2.tooltipText = "{valueY.value}";
+      series2.tooltipText = "Volume: {valueY.value}";
       series2.name = "Volume: ";
       series2.legendSettings.valueText = "{valueY.value}";
       series2.groupFields.valueY = "sum";
@@ -126,7 +132,7 @@ export class ChartDisplayPage implements OnInit {
       (<am4core.ICSVOptions>series50.dataSource.parser.options).reverse = true;
       series50.dataFields.dateX = "col0";
       series50.dataFields.valueY = "col1";
-      //series50.tooltipText = "{valueY.value}";
+      series50.tooltipText = "50 DMA: {valueY.value}";
       series50.name = "50 DMA: ";
       series50.legendSettings.valueText = "{valueY.value}";
       series50.defaultState.transitionDuration = 0;
@@ -141,26 +147,24 @@ export class ChartDisplayPage implements OnInit {
       (<am4core.ICSVOptions>series200.dataSource.parser.options).reverse = true;
       series200.dataFields.dateX = "col0";
       series200.dataFields.valueY = "col1";
-      //series200.tooltipText = "{valueY.value}";
+      series200.tooltipText = "200 DMA: {valueY.value}";
       series200.name = "200 DMA: ";
       series200.legendSettings.valueText = "{valueY.value}";
       series200.defaultState.transitionDuration = 0;
       series200.fill = am4core.color("orange");
       series200.stroke = am4core.color("orange");
-      series200.hidden = true;
+      //series200.hidden = true;
       
       chart.cursor = new am4charts.XYCursor();
 
-      chart.legend = new am4charts.Legend();
-      chart.legend.position = "top";
-      chart.legend.fontSize = 15;
-      chart.legend.useDefaultMarker = true;
-      const marker = chart.legend.markers.template.children.getIndex(0);
-      //marker.cornerRadius(12, 12, 12, 12);
-      marker.width = 15;
-      marker.height = 15;
-
       chart.preloader.disabled = true;
+      
+      let chartEvent = chart.events.onAll( function (event) {
+        let max = dateAxis.groupMax["day1"];
+        let date = new Date(max);
+        am4core.time.add(date, "month", -1);
+        zoomToDates(date);
+      });
       
       /**
        * Setting up external controls
@@ -168,46 +172,44 @@ export class ChartDisplayPage implements OnInit {
       
       // Date format to be used in input fields
       let inputFieldFormat = "yyyy-MM-dd";
-      
-      document.getElementById("b1m").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -1);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("b3m").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -3);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("b6m").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -6);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("b1y").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "year", -1);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("bytd").addEventListener("click", function() {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.round(date, "year", 1);
-        zoomToDates(date);
-      });
-      
-      document.getElementById("bmax").addEventListener("click", function() {
-        let min = dateAxis.groupMin["day1"];
-        let date = new Date(min);
-        zoomToDates(date);
+      document.getElementById("duration-select").addEventListener("ionChange", function($event) {
+        this.duration = (<HTMLIonSelectElement>event.target).value;
+        chartEvent.dispose();
+        if ((<HTMLIonSelectElement>event.target).value === '1m') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "month", -1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '3m') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "month", -3);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '6m') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "month", -6);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '1y') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "year", -1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === 'YTD') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.round(date, "year", 1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === 'MAX') {
+          let min = dateAxis.groupMin["day1"];
+          let date = new Date(min);
+          zoomToDates(date);
+        }
       });
       
       dateAxis.events.on("selectionextremeschanged", function() {

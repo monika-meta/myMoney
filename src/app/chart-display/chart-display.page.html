@@ -1,38 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Chart</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()"><ion-icon name="close"></ion-icon></ion-button>
+    <ion-buttons slot="start" no-padding>
+      <ion-button (click)="dismissModal()"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
+    <ion-grid id="header-content" no-padding>
+      <ion-row>
+        <ion-col>
+          <ion-title size="small">Reliance</ion-title>
+        </ion-col>
+        <ion-col>
+          <ion-select [(ngModel)]="duration" [placeholder]="Duration" interface="popover" id="duration-select" class="amcharts-input">
+            <ion-select-option value="1m" [selected]="duration == '1m'">1 Month</ion-select-option>
+            <ion-select-option value="3m">3 Months</ion-select-option>
+            <ion-select-option value="6m">6 Months</ion-select-option>
+            <ion-select-option value="1y">1 Year</ion-select-option>
+            <ion-select-option value="YTD">Year To Date</ion-select-option>
+            <ion-select-option value="MAX">Maximum</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div id="container">
-    <ion-grid id="controls">
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>From:</ion-label>
-            <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="fromfield" class="amcharts-input"></ion-datetime>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label>To:</ion-label>
-            <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="tofield" class="amcharts-input"></ion-datetime>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <button id="b1m" class="amcharts-input">1m</button>
-          <button id="b3m" class="amcharts-input">3m</button>
-          <button id="b6m" class="amcharts-input">6m</button>
-          <button id="b1y" class="amcharts-input">1y</button>
-          <button id="bytd" class="amcharts-input">YTD</button>
-          <button id="bmax" class="amcharts-input">MAX</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <div id="chartdiv" style="width: 100%; height: 600px;"></div>
+    <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="fromfield" class="amcharts-input" style="display:none"></ion-datetime>
+    <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="tofield" class="amcharts-input" style="display:none"></ion-datetime>
+    <div id="chartdiv" style="width: 100%;" [style.height]="chartHeight"></div>
   </div>
 </ion-content>
