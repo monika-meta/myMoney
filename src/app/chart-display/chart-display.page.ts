@@ -180,7 +180,7 @@ export class ChartDisplayPage implements OnInit {
       // Date format to be used in input fields
       let inputFieldFormat = "yyyy-MM-dd";
       document.getElementById("duration-select").addEventListener("ionChange", function($event) {
-        this.duration = (<HTMLIonSelectElement>event.target).value;
+        this.duration = (<HTMLIonSelectElement>document.getElementById("duration-select")).value;
         
         if ((<HTMLIonSelectElement>event.target).value === '1m') {
           let max = dateAxis.groupMax["day1"];
