@@ -4,6 +4,44 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  My Assessment works.
+<ion-content >
+<div class="assesment-wrapper">
+  <div class="assesment-top">
+    
+  <div class="assesment-box">
+    <p class="title">
+      Money Works 4me <span>Assesment</span>
+    </p>
+    
+      <label for="">Very good</label>
+    </div><div class="assesment-box">   <p class="title">
+      Community <span>Assesment</span></p>
+    
+      <label for="">Very good</label>
+    </div>
+  </div>
+  <div class="assesment-bottom">
+    <div class="assesment-box">
+      <p class="title">
+       Select your  Assesment of Future Prospectus
+      </p>
+      <ion-radio-group>
+        <div class="radio-group">
+          
+          <ion-radio slot="start" value="Very Good"></ion-radio>
+          <ion-label class="lbl lbl-green" >Very Good</ion-label>
+        </div>
+        <div class="radio-group">
+          <ion-radio slot="start"  value="SomeWhat Good"></ion-radio>          
+          <ion-label class="lbl lbl-yellow">SomeWhat Good</ion-label>
+        </div><div class="radio-group">
+          <ion-radio slot="start"  value="Not Good"></ion-radio>          
+          <ion-label class="lbl lbl-red">Not Good</ion-label>
+        </div><div class="radio-group">
+          <ion-button href="#"  color="dark">Save</ion-button>
+        </div>
+      </ion-radio-group>
+    </div>
+  </div>
+</div>
 </ion-content>

@@ -1,5 +1,6 @@
 ion-header {
     --border-color: transparent;
+ 
 }
 
 .custom-header {
@@ -58,22 +59,17 @@ ion-header {
         color: #607D8B;
         font-size: 13px;
         font-weight: 600;
-        border-radius: 10px;
+        border-radius: 0;
+        box-shadow: none;
         white-space: nowrap;
 
 
 
         &.odd {
             background-color: #fff;
-            margin: 4px;
-            margin-top: 5px;
-            box-shadow: 0 0 6px 2px #ececec;
         }
 
         &.even {
-            margin: 4px;
-            margin-top: 5px;
-            box-shadow: 0 0 6px 2px #ececec;
         }
     }
 }

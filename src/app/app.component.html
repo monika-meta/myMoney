@@ -15,7 +15,7 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item menu-close ui-sref="app.home" [routerLink]="[p.url]">
+            <ion-item class="menu-items" menu-close ui-sref="app.home" [routerLink]="[p.url]">
               {{p.title}}
             </ion-item>
           </ion-menu-toggle>
