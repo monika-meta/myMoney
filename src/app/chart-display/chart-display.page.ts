@@ -48,7 +48,7 @@ export class ChartDisplayPage implements OnInit {
       await loading.present();
       am4core.useTheme(am4themes_animated);
       let chart = am4core.create("chartdiv", am4charts.XYChart);
-      chart.padding(20, 0, 0, 0);
+      chart.padding(0, 15, 0, 15);
       
       chart.leftAxesContainer.layout = "vertical";
 
@@ -72,7 +72,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis.zIndex = 1;
       valueAxis.renderer.baseGrid.disabled = true;
       // height of axis
-      valueAxis.height = am4core.percent(85);
+      valueAxis.height = am4core.percent(50);
       
       valueAxis.renderer.gridContainer.background.fill = am4core.color("#000000");
       valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
@@ -89,7 +89,7 @@ export class ChartDisplayPage implements OnInit {
       
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
-      series.tooltipText = "Closing Price: {valueY.value}";
+      //series.tooltipText = "{valueY.value}";
       series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
       series.defaultState.transitionDuration = 0;
@@ -99,10 +99,10 @@ export class ChartDisplayPage implements OnInit {
       let valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis2.tooltip.disabled = true;
       // height of axis
-      valueAxis2.height = am4core.percent(35);
+      valueAxis2.height = am4core.percent(15);
       valueAxis2.zIndex = 3;
       // Makes gap between panels
-      valueAxis2.marginTop = 30;
+      valueAxis2.marginTop = 10;
       valueAxis2.renderer.baseGrid.disabled = true;
       valueAxis2.renderer.inside = true;
       valueAxis2.renderer.labels.template.verticalCenter = "bottom";
@@ -119,7 +119,7 @@ export class ChartDisplayPage implements OnInit {
       series2.dataFields.dateX = "col0";
       series2.dataFields.valueY = "col1";
       series2.yAxis = valueAxis2;
-      series2.tooltipText = "Volume: {valueY.value}";
+      //series2.tooltipText = "{valueY.value}";
       series2.name = "Volume: ";
       series2.legendSettings.valueText = "{valueY.value}";
       series2.groupFields.valueY = "sum";
@@ -132,7 +132,7 @@ export class ChartDisplayPage implements OnInit {
       (<am4core.ICSVOptions>series50.dataSource.parser.options).reverse = true;
       series50.dataFields.dateX = "col0";
       series50.dataFields.valueY = "col1";
-      series50.tooltipText = "50 DMA: {valueY.value}";
+      //series50.tooltipText = "{valueY.value}";
       series50.name = "50 DMA: ";
       series50.legendSettings.valueText = "{valueY.value}";
       series50.defaultState.transitionDuration = 0;
@@ -147,25 +147,43 @@ export class ChartDisplayPage implements OnInit {
       (<am4core.ICSVOptions>series200.dataSource.parser.options).reverse = true;
       series200.dataFields.dateX = "col0";
       series200.dataFields.valueY = "col1";
-      series200.tooltipText = "200 DMA: {valueY.value}";
+      //series200.tooltipText = "{valueY.value}";
       series200.name = "200 DMA: ";
       series200.legendSettings.valueText = "{valueY.value}";
       series200.defaultState.transitionDuration = 0;
       series200.fill = am4core.color("orange");
       series200.stroke = am4core.color("orange");
-      //series200.hidden = true;
+      series200.hidden = true;
       
       chart.cursor = new am4charts.XYCursor();
+      
+      let legendContainer = am4core.create("legenddiv", am4core.Container);
+      chart.legend = new am4charts.Legend();
+      chart.legend.parent = legendContainer;
+      chart.legend.fontSize = "0.8em";
+      legendContainer.width = am4core.percent(100);
+      chart.legend.useDefaultMarker = true;
+      const marker = chart.legend.markers.template.children.getIndex(0);
+      //marker.cornerRadius(12, 12, 12, 12);
+      marker.width = 10;
+      marker.height = 10;
 
       chart.preloader.disabled = true;
+
+      dateAxis.showOnInit = false;
       
-      let chartEvent = chart.events.onAll( function (event) {
+      chart.events.on("transitionended", function () {
         let max = dateAxis.groupMax["day1"];
         let date = new Date(max);
         am4core.time.add(date, "month", -1);
-        zoomToDates(date);
+        dateAxis.zoomToDates(
+          date,
+          new Date(max),
+          false,
+          true // this makes zoom instant
+        );
       });
-      
+
       /**
        * Setting up external controls
        */
@@ -174,7 +192,7 @@ export class ChartDisplayPage implements OnInit {
       let inputFieldFormat = "yyyy-MM-dd";
       document.getElementById("duration-select").addEventListener("ionChange", function($event) {
         this.duration = (<HTMLIonSelectElement>event.target).value;
-        chartEvent.dispose();
+        
         if ((<HTMLIonSelectElement>event.target).value === '1m') {
           let max = dateAxis.groupMax["day1"];
           let date = new Date(max);
@@ -197,6 +215,12 @@ export class ChartDisplayPage implements OnInit {
           let max = dateAxis.groupMax["day1"];
           let date = new Date(max);
           am4core.time.add(date, "year", -1);
+          zoomToDates(date);
+        }
+        if ((<HTMLIonSelectElement>event.target).value === '3y') {
+          let max = dateAxis.groupMax["day1"];
+          let date = new Date(max);
+          am4core.time.add(date, "year", -3);
           zoomToDates(date);
         }
         if ((<HTMLIonSelectElement>event.target).value === 'YTD') {
@@ -254,6 +278,7 @@ export class ChartDisplayPage implements OnInit {
       
         dateAxis.zoom({start:(date.getTime() - min)/(max - min), end:1});
       }
+
     this.chart = chart;
     });
     await loading.onDidDismiss();
