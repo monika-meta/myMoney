@@ -14,6 +14,7 @@
             <ion-select-option value="3m">3 Months</ion-select-option>
             <ion-select-option value="6m">6 Months</ion-select-option>
             <ion-select-option value="1y">1 Year</ion-select-option>
+            <ion-select-option value="3y">3 Year</ion-select-option>
             <ion-select-option value="YTD">Year To Date</ion-select-option>
             <ion-select-option value="MAX">Maximum</ion-select-option>
           </ion-select>
@@ -27,6 +28,7 @@
   <div id="container">
     <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="fromfield" class="amcharts-input" style="display:none"></ion-datetime>
     <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="tofield" class="amcharts-input" style="display:none"></ion-datetime>
+    <div id="legenddiv" style="height: 30px !important;"></div>
     <div id="chartdiv" style="width: 100%;" [style.height]="chartHeight"></div>
   </div>
 </ion-content>
