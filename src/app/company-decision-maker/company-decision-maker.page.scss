@@ -1,0 +1,72 @@
+.dicision-wrapper{
+    padding: 15px;
+    .box{
+        margin-bottom: 15px;
+        &.style-2{
+            .header{
+                background-color: #dcf172;
+                color: #000;
+            } .content
+            {
+                background-color:#cbe061;
+            }
+        }
+        .header{
+            padding:10px;
+            background-color: #2eaddc;
+        }
+        .content{
+            padding:15px;
+            background-color: #d5f2ff;
+        }
+        .assured-bar{
+            background-color: #eef2e6;
+            padding:10px;
+            margin-bottom: 20px;
+            color: #000;
+            position: relative;
+            p{
+                margin: 0;
+            }
+        .rating{
+            background-color: #038a3d;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 70px;
+            color: #fff;
+            padding: 4px;
+            font-size: 12px;
+            padding-left: 30px;
+            text-align: center;
+            .custom-star{
+                position: absolute;
+    left: 10px;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e9ff00;
+            }
+        }
+        }
+        .time-box{
+            background-color: #fff;
+    padding: 30px 15px 2px;
+    text-align: center;
+    color: #000;
+            h4{
+                text-align: center;
+    box-shadow: 0 0 4px 0px #000;
+    display: inline-block;
+    padding: 5px;
+    font-size: 13px;
+margin-bottom: 0;
+    border-radius: 50px;
+            }
+            p{
+            margin-top: 5px;
+            }
+        }
+    }
+}
