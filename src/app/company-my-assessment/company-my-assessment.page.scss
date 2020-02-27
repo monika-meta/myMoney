@@ -1,0 +1,68 @@
+.assesment-box{
+padding:20px 15px;
+font-size: 12px;    border:1px solid #464646;
+    label{
+        background-color: #038a3d;
+        display: inline-block;
+        padding:10px;
+
+        color:#fff;
+    }
+    .title{
+        display: block;
+        margin:0;
+        margin-bottom: 10px;
+        text-align: center;
+        span{
+            display: block;
+        }
+    }
+}
+.assesment-wrapper{
+    padding:10px;
+    
+    .assesment-top{
+        display: flex;
+        margin-bottom: 20px;
+        .assesment-box{
+            width: 50%;
+            border:1px solid #464646;
+            text-align: center;
+            &:first-child{
+                border-right:none;
+            }
+
+        }
+    }
+}
+.radio-group{
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: middle;
+    margin-top: 20px;
+    ion-radio{
+        vertical-align: middle;
+    }
+    .lbl{
+        padding:10px;
+        margin-left: 10px;
+        min-width: 110px;
+        text-align: center;
+        display: inline-block;
+        &.lbl-green{
+            background-color: #038a3d;
+            
+        } &.lbl-yellow{
+            background-color: #ffcf06;
+            
+        } &.lbl-red{
+            background-color: #f00000;
+            
+        } &.lbl-gray{
+            background-color: #6a6e62;
+            
+        }
+      
+    }
+   
+}
