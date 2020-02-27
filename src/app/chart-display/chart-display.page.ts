@@ -21,7 +21,7 @@ export class ChartDisplayPage implements OnInit {
   chartHeight = (this.deviceHeight)*0.26 + "px";
 
   constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
-    this.duration = "1m";
+    this.duration = "MAX";
    }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class ChartDisplayPage implements OnInit {
       await loading.present();
       am4core.useTheme(am4themes_animated);
       let chart = am4core.create("chartdiv", am4charts.XYChart);
-      chart.padding(0, 15, 0, 15);
+      chart.padding(0, 5, 0, 5);
       
       chart.leftAxesContainer.layout = "vertical";
       chart.preloader.disabled = true;
@@ -61,6 +61,7 @@ export class ChartDisplayPage implements OnInit {
       dateAxis.renderer.ticks.template.disabled = false;
       dateAxis.renderer.ticks.template.strokeOpacity = 0.2;
       dateAxis.renderer.fontSize = "0.6em";
+      dateAxis.tooltip.fontSize = "0.6em";
       dateAxis.renderer.minLabelPosition = 0.01;
       dateAxis.renderer.maxLabelPosition = 0.99;
       dateAxis.keepSelection = true;
@@ -92,6 +93,7 @@ export class ChartDisplayPage implements OnInit {
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
       series.tooltipText = "Closing Price: {valueY.value}";
+      series.tooltip.fontSize = "0.8em";
       series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
       series.defaultState.transitionDuration = 0;
@@ -105,7 +107,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis2.height = am4core.percent(15);
       valueAxis2.zIndex = 3;
       // Makes gap between panels
-      valueAxis2.marginTop = 10;
+      valueAxis2.marginTop = 13;
       valueAxis2.renderer.baseGrid.disabled = true;
       valueAxis2.renderer.inside = true;
       valueAxis2.renderer.labels.template.verticalCenter = "bottom";
@@ -171,20 +173,6 @@ export class ChartDisplayPage implements OnInit {
       marker.width = 10;
       marker.height = 10;
 
-      //dateAxis.showOnInit = false;
-      
-      chart.events.on("propertychanged", function () {
-        let max = dateAxis.groupMax["day1"];
-        let date = new Date(max);
-        am4core.time.add(date, "month", -1);
-        dateAxis.zoomToDates(
-          date,
-          new Date(max),
-          false,
-          true // this makes zoom instant
-        );
-      });
-
       /**
        * Setting up external controls
        */
@@ -192,7 +180,7 @@ export class ChartDisplayPage implements OnInit {
       // Date format to be used in input fields
       let inputFieldFormat = "yyyy-MM-dd";
       document.getElementById("duration-select").addEventListener("ionChange", function($event) {
-        this.duration = (<HTMLIonSelectElement>event.target).value;
+        this.duration = (<HTMLIonSelectElement>document.getElementById("duration-select")).value;
         
         if ((<HTMLIonSelectElement>event.target).value === '1m') {
           let max = dateAxis.groupMax["day1"];
