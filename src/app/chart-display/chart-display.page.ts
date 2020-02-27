@@ -18,7 +18,7 @@ export class ChartDisplayPage implements OnInit {
   ratio = window.devicePixelRatio || 1;
   deviceWidth = screen.width * this.ratio;
   deviceHeight = screen.height * this.ratio;
-  chartHeight = (this.deviceHeight)/4 + "px";
+  chartHeight = (this.deviceHeight)*0.26 + "px";
 
   constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
     this.duration = "1m";
@@ -60,6 +60,7 @@ export class ChartDisplayPage implements OnInit {
       dateAxis.renderer.grid.template.disabled = true;
       dateAxis.renderer.ticks.template.disabled = false;
       dateAxis.renderer.ticks.template.strokeOpacity = 0.2;
+      dateAxis.renderer.fontSize = "0.6em";
       dateAxis.renderer.minLabelPosition = 0.01;
       dateAxis.renderer.maxLabelPosition = 0.99;
       dateAxis.keepSelection = true;
@@ -81,7 +82,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis.renderer.labels.template.verticalCenter = "bottom";
       valueAxis.renderer.labels.template.padding(2, 2, 2, 2);
       
-      valueAxis.renderer.fontSize = "0.8em";
+      valueAxis.renderer.fontSize = "0.6em";
       
       let series = chart.series.push(new am4charts.LineSeries());
       series.dataSource.url = "assets/data/reliance/chartdata.csv";
@@ -109,7 +110,7 @@ export class ChartDisplayPage implements OnInit {
       valueAxis2.renderer.inside = true;
       valueAxis2.renderer.labels.template.verticalCenter = "bottom";
       valueAxis2.renderer.labels.template.padding(2, 2, 2, 2);
-      valueAxis2.renderer.fontSize = "0.8em";
+      valueAxis2.renderer.fontSize = "0.6em";
       
       valueAxis2.renderer.gridContainer.background.fill = am4core.color("#000000");
       valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
