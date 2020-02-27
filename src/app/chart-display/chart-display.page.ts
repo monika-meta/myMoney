@@ -4,6 +4,7 @@ import { ModalController, LoadingController, NavController, Platform } from '@io
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-chart-display',
@@ -47,7 +48,7 @@ export class ChartDisplayPage implements OnInit {
       await loading.present();
       am4core.useTheme(am4themes_animated);
       let chart = am4core.create("chartdiv", am4charts.XYChart);
-      chart.padding(0, 15, 0, 15);
+      chart.padding(20, 0, 0, 0);
       
       chart.leftAxesContainer.layout = "vertical";
 
@@ -88,7 +89,7 @@ export class ChartDisplayPage implements OnInit {
       
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
-      //series.tooltipText = "{valueY.value}";
+      series.tooltipText = "Closing Price: {valueY.value}";
       series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
       series.defaultState.transitionDuration = 0;
@@ -118,7 +119,7 @@ export class ChartDisplayPage implements OnInit {
       series2.dataFields.dateX = "col0";
       series2.dataFields.valueY = "col1";
       series2.yAxis = valueAxis2;
-      //series2.tooltipText = "{valueY.value}";
+      series2.tooltipText = "Volume: {valueY.value}";
       series2.name = "Volume: ";
       series2.legendSettings.valueText = "{valueY.value}";
       series2.groupFields.valueY = "sum";
@@ -131,7 +132,7 @@ export class ChartDisplayPage implements OnInit {
       (<am4core.ICSVOptions>series50.dataSource.parser.options).reverse = true;
       series50.dataFields.dateX = "col0";
       series50.dataFields.valueY = "col1";
-      //series50.tooltipText = "{valueY.value}";
+      series50.tooltipText = "50 DMA: {valueY.value}";
       series50.name = "50 DMA: ";
       series50.legendSettings.valueText = "{valueY.value}";
       series50.defaultState.transitionDuration = 0;
@@ -146,28 +147,19 @@ export class ChartDisplayPage implements OnInit {
       (<am4core.ICSVOptions>series200.dataSource.parser.options).reverse = true;
       series200.dataFields.dateX = "col0";
       series200.dataFields.valueY = "col1";
-      //series200.tooltipText = "{valueY.value}";
+      series200.tooltipText = "200 DMA: {valueY.value}";
       series200.name = "200 DMA: ";
       series200.legendSettings.valueText = "{valueY.value}";
       series200.defaultState.transitionDuration = 0;
       series200.fill = am4core.color("orange");
       series200.stroke = am4core.color("orange");
-      series200.hidden = true;
+      //series200.hidden = true;
       
       chart.cursor = new am4charts.XYCursor();
 
-      chart.legend = new am4charts.Legend();
-      chart.legend.position = "top";
-      chart.legend.fontSize = 15;
-      chart.legend.useDefaultMarker = true;
-      const marker = chart.legend.markers.template.children.getIndex(0);
-      //marker.cornerRadius(12, 12, 12, 12);
-      marker.width = 15;
-      marker.height = 15;
-
       chart.preloader.disabled = true;
       
-      let chartEvent = chart.events.onAll(function () {
+      let chartEvent = chart.events.onAll( function (event) {
         let max = dateAxis.groupMax["day1"];
         let date = new Date(max);
         am4core.time.add(date, "month", -1);
