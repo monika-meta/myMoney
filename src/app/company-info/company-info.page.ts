@@ -6,6 +6,7 @@ import { CompanyNewsPage } from '../company-news/company-news.page';
 import { CompanyDecisionMakerPage } from '../company-decision-maker/company-decision-maker.page';
 import { CompanyMyAssessmentPage } from '../company-my-assessment/company-my-assessment.page';
 import { CompanyIndustryScreenerPage } from '../company-industry-screener/company-industry-screener.page';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-company-info',
@@ -21,9 +22,26 @@ export class CompanyInfoPage implements OnInit {
   companyAboutPage = CompanyAboutPage;
   companyIndustryScreenerPage = CompanyIndustryScreenerPage;
 
-  constructor() { }
+  constructor(public actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      buttons: [{
+        text: 'Add to My Portfolio',
+        icon: 'bookmarks'
+      }, {
+        text: 'Add to My Watchlist',
+        icon: 'eye'
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel'
+      }]
+    });
+    await actionSheet.present();
   }
 
 }
