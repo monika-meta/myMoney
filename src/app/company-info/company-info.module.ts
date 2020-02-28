@@ -15,6 +15,7 @@ import { CompanyNewsPageModule } from '../company-news/company-news.module';
 import { CompanyDecisionMakerPageModule } from '../company-decision-maker/company-decision-maker.module';
 import { CompanyMyAssessmentPageModule } from '../company-my-assessment/company-my-assessment.module';
 import { CompanyAboutPageModule } from '../company-about/company-about.module';
+import { CompanyIndustryScreenerPageModule } from '../company-industry-screener/company-industry-screener.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { CompanyAboutPageModule } from '../company-about/company-about.module';
     CompanyNewsPageModule,
     CompanyDecisionMakerPageModule,
     CompanyMyAssessmentPageModule,
-    CompanyAboutPageModule
+    CompanyAboutPageModule,
+    CompanyIndustryScreenerPageModule
   ],
   declarations: [CompanyInfoPage]
 })

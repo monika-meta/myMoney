@@ -32,6 +32,10 @@
       </super-tab-button>
 
       <super-tab-button class="custom-tab-btn">
+        <ion-label color="light">Industry Screener</ion-label>
+      </super-tab-button>
+
+      <super-tab-button class="custom-tab-btn">
         <ion-label color="light">Decision Maker</ion-label>
       </super-tab-button>
   
@@ -61,6 +65,11 @@
       <super-tab>
         <ion-content>
           <ion-nav [root]="companyNewsPage"></ion-nav>
+        </ion-content>
+      </super-tab>
+      <super-tab>
+        <ion-content>
+          <ion-nav [root]="companyIndustryScreenerPage"></ion-nav>
         </ion-content>
       </super-tab>
       <super-tab>

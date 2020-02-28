@@ -5,6 +5,7 @@ import { CompanyShareholdingPatternPage } from '../company-shareholding-pattern/
 import { CompanyNewsPage } from '../company-news/company-news.page';
 import { CompanyDecisionMakerPage } from '../company-decision-maker/company-decision-maker.page';
 import { CompanyMyAssessmentPage } from '../company-my-assessment/company-my-assessment.page';
+import { CompanyIndustryScreenerPage } from '../company-industry-screener/company-industry-screener.page';
 
 @Component({
   selector: 'app-company-info',
@@ -18,6 +19,7 @@ export class CompanyInfoPage implements OnInit {
   companyDecisionMakerPage = CompanyDecisionMakerPage;
   companyMyAssessmentPage = CompanyMyAssessmentPage;
   companyAboutPage = CompanyAboutPage;
+  companyIndustryScreenerPage = CompanyIndustryScreenerPage;
 
   constructor() { }
 

@@ -43,7 +43,11 @@ const routes: Routes = [
   {
     path: 'chart-display',
     loadChildren: () => import('./chart-display/chart-display.module').then( m => m.ChartDisplayPageModule)
+  },  {
+    path: 'company-industry-screener',
+    loadChildren: () => import('./company-industry-screener/company-industry-screener.module').then( m => m.CompanyIndustryScreenerPageModule)
   }
+
 
 
 ];
