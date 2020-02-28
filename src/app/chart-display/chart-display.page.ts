@@ -29,11 +29,9 @@ export class ChartDisplayPage implements OnInit {
         this.chartHeight = (this.deviceHeight)*0.115 + "vh";
       } 
       else if (this.platform.is('ios')) {
-        console.log(this.deviceHeight);
         this.chartHeight = (this.deviceHeight)*0.106 + "vh";
       }
       else if (this.platform.is('android')) {
-        console.log(this.deviceHeight);
         this.chartHeight = (this.deviceHeight)*0.0753 + "vh";
       }
     });
