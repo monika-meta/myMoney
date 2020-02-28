@@ -9,6 +9,7 @@
             } .content
             {
                 background-color:#cbe061;
+                padding-bottom: 5px;
             }
         }
         .header{
@@ -69,4 +70,84 @@ margin-bottom: 0;
             }
         }
     }
+}
+.right-box{
+.bar-box{
+    position: relative;
+    padding: 30px 10px 80px;
+    margin-bottom: 10px;
+    .cmp-box    
+    {
+        position: absolute;
+        top: -5px;
+        font-size: 10px;
+        right: 0;
+        color: #000;
+        border: 1px solid #000;
+        padding: 0 5px;
+        border-radius: 5px;
+        text-align: center;
+        strong  {
+            color: #f01f26;
+            display: block;
+        }
+    }
+    .bar{
+        background-image: linear-gradient(to right, #009b2c, #54a217, #7fa800, #a7ac00, #ccae00, #dda600, #ee9c00, #ff9100, #fd7a06, #fb6212, #f6461d, #f01f26);
+        height: 10px;
+        width: 80%;
+        margin:0 auto;
+        position: relative;
+        .val-plus,.val-nutral,.val-minus{
+            position: absolute;
+        }
+        .val-nutral{
+            top:22px;   font-size:11px;
+            left: 50%;
+            transform: translateX(-50%);strong{
+                display: block;
+            }
+        }
+        .val-plus,.val-minus{
+            background-color: #fff;
+            padding:2px 5px;
+            font-size:11px;
+            text-align: center;
+            min-width:40px;
+            &:before{
+                content: "";
+                height: 14px;
+                width: 3px;
+                background-color: #ccc;
+                top: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                position: absolute;
+
+            }
+            strong{
+                display: block;
+            }
+        }
+        .val-plus{
+            top:20px;
+            left:30px;
+        }.val-minus{
+            right: 30px;
+            top: 20px;
+        }
+    }
+}
+.bar-links{
+position: relative;
+height: 10px;
+    a{
+        position: absolute;
+        bottom: 10px;
+        font-size: 12px;
+        &:last-child{
+            right:0;
+        }
+    }
+}
 }
