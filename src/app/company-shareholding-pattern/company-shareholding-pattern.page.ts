@@ -31,9 +31,9 @@ export class CompanyShareholdingPatternPage implements OnInit {
       pieSeries.ticks.template.disabled = true;
 
       pieSeries.colors.list = [
-        am4core.color("#2E8B57"),
-        am4core.color("#3CB371"),
-        am4core.color("#8FBC7F")
+        am4core.color("#61d975"),
+        am4core.color("#81e091"),
+        am4core.color("#a0e8ac")
       ];
 
       // Add a legend
