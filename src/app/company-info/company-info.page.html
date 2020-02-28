@@ -24,25 +24,25 @@
       </super-tab-button>
   
       <super-tab-button class="custom-tab-btn">
-        <ion-label color="light">Shareholding Pattern</ion-label>
-      </super-tab-button>
-
-      <super-tab-button class="custom-tab-btn">
-        <ion-label color="light">News</ion-label>
-      </super-tab-button>
-
-      <super-tab-button class="custom-tab-btn">
-        <ion-label color="light">Industry Screener</ion-label>
-      </super-tab-button>
-
-      <super-tab-button class="custom-tab-btn">
         <ion-label color="light">Decision Maker</ion-label>
+      </super-tab-button>
+
+      <super-tab-button class="custom-tab-btn">
+        <ion-label color="light">Shareholding Pattern</ion-label>
       </super-tab-button>
   
       <super-tab-button class="custom-tab-btn">
         <ion-label color="light">My Assessment</ion-label>
       </super-tab-button>
+
+      <super-tab-button class="custom-tab-btn">
+        <ion-label color="light">Industry Screener</ion-label>
+      </super-tab-button>
   
+      <super-tab-button class="custom-tab-btn">
+        <ion-label color="light">News</ion-label>
+      </super-tab-button>
+
       <super-tab-button class="custom-tab-btn">
         <ion-label color="light">About Company</ion-label>
       </super-tab-button>
@@ -56,12 +56,17 @@
       </super-tab>
       <super-tab>
         <ion-content>
+          <ion-nav [root]="companyDecisionMakerPage"></ion-nav>
+        </ion-content>
+      </super-tab>
+      <super-tab>
+        <ion-content>
           <ion-nav [root]="companyShareholdingPatternPage"></ion-nav>
         </ion-content>
       </super-tab>
       <super-tab>
         <ion-content>
-          <ion-nav [root]="companyNewsPage"></ion-nav>
+          <ion-nav [root]="companyMyAssessmentPage"></ion-nav>
         </ion-content>
       </super-tab>
       <super-tab>
@@ -71,12 +76,7 @@
       </super-tab>
       <super-tab>
         <ion-content>
-          <ion-nav [root]="companyDecisionMakerPage"></ion-nav>
-        </ion-content>
-      </super-tab>
-      <super-tab>
-        <ion-content>
-          <ion-nav [root]="companyMyAssessmentPage"></ion-nav>
+          <ion-nav [root]="companyNewsPage"></ion-nav>
         </ion-content>
       </super-tab>
       <super-tab>
