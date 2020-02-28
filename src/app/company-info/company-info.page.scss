@@ -12,6 +12,14 @@
     background-color: #2f2f2f;
     padding:10px;
     color: #fff;
+    position: relative;
+    ion-button{
+        top: 0;
+        position: absolute;
+        right: 5px;
+        padding: 0;
+        height: 26px;
+    }
     p{
         font-size: 12px;
         margin-bottom: 0;
