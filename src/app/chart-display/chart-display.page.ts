@@ -14,14 +14,14 @@ import { Event } from '@angular/router';
 export class ChartDisplayPage implements OnInit {
 
   private chart: am4charts.XYChart;
-  duration: any;
+  public displayDuration;
   ratio = window.devicePixelRatio || 1;
   deviceWidth = screen.width * this.ratio;
   deviceHeight = screen.height * this.ratio;
-  chartHeight = (this.deviceHeight)*0.26 + "px";
+  chartHeight = (this.deviceHeight)*0.0755 + "vh";
 
   constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
-    this.duration = "MAX";
+    this.displayDuration = "MAX";
    }
 
   ngOnInit() {
@@ -55,7 +55,7 @@ export class ChartDisplayPage implements OnInit {
 
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
-      dateAxis.renderer.ticks.template.length = 8;
+      dateAxis.renderer.ticks.template.length = 2;
       dateAxis.renderer.ticks.template.strokeOpacity = 0.1;
       dateAxis.renderer.grid.template.disabled = true;
       dateAxis.renderer.ticks.template.disabled = false;
@@ -180,7 +180,7 @@ export class ChartDisplayPage implements OnInit {
       // Date format to be used in input fields
       let inputFieldFormat = "yyyy-MM-dd";
       document.getElementById("duration-select").addEventListener("ionChange", function($event) {
-        this.duration = (<HTMLIonSelectElement>document.getElementById("duration-select")).value;
+        this.displayDuration = (<HTMLIonSelectElement>document.getElementById("duration-select")).value;
         
         if ((<HTMLIonSelectElement>event.target).value === '1m') {
           let max = dateAxis.groupMax["day1"];

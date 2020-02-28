@@ -30,6 +30,12 @@ export class CompanyShareholdingPatternPage implements OnInit {
       pieSeries.labels.template.disabled = true;
       pieSeries.ticks.template.disabled = true;
 
+      pieSeries.colors.list = [
+        am4core.color("#2E8B57"),
+        am4core.color("#3CB371"),
+        am4core.color("#8FBC7F")
+      ];
+
       // Add a legend
       chart.legend = new am4charts.Legend();
       chart.legend.position = "bottom";
