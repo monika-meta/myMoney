@@ -1,5 +1,6 @@
 .ion-color-medium{
     background-color: #96c668;
+   
 }
 .custom-header{
     color: #96C668;
@@ -11,6 +12,11 @@
     background-color: #2f2f2f;
     padding:10px;
     color: #fff;
+    p{
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
     h3{
         margin:0;
         font-size:24px;
@@ -25,11 +31,13 @@
         font-size:15px;
         margin-left: 5px;
     margin-top: 2px;
+    top: -3px;
+    position: relative;
     }
     p{
-        padding-left: 32px;
+        padding-left: 15px;
         font-size: 12px;
-        color: #ccc;
+        color: #fff;
         margin-top: 5px;
         span{
             margin-left: 10px;
@@ -39,4 +47,10 @@
 }
 .custom-tab-btn{
     height: 30px;
+    padding: 0;
+    ion-label{
+        font-size: 11px;
+        font-weight: 400;
+        text-transform: capitalize;
+    }
 }

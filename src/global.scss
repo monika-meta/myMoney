@@ -25,10 +25,7 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-:root{
-    --ion-background-color:#000;
-    --ion-color:#fff;
-}
+
 .header-md:after{
     background: none;
 }
@@ -66,3 +63,6 @@
 ion-toolbar{
     --min-height:48px !important;
   }
+  .buttons-container{
+    padding:0 !important;
+}
