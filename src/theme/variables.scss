@@ -75,7 +75,9 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  --ion-text-color:             #fff;
 
-
+  .buttons-container {
+    padding-left: var(--st-scrollable-toolbar-padding-left,12px);
+    width: calc(100% - var(--st-scrollable-toolbar-padding-left, $st-scrollable-toolbar-padding-left));
+}
 }
