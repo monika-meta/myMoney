@@ -84,7 +84,7 @@ export class ChartDisplayPage implements OnInit {
       dateAxis.minZoomCount = 5;
       
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.tooltip.disabled = true;
+      //valueAxis.tooltip.disabled = true;
       valueAxis.zIndex = 1;
       valueAxis.renderer.baseGrid.disabled = true;
       // height of axis
@@ -105,7 +105,7 @@ export class ChartDisplayPage implements OnInit {
       
       series.dataFields.dateX = "col0";
       series.dataFields.valueY = "col2";
-      series.tooltipText = "Closing Price: {valueY.value}";
+      //series.tooltipText = "Closing Price: {valueY.value}";
       series.tooltip.fontSize = "0.8em";
       series.name = "Closing Price: ";
       series.legendSettings.valueText = "{valueY.value}";
