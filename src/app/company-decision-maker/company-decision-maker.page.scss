@@ -138,16 +138,5 @@ margin-bottom: 0;
         }
     }
 }
-.bar-links{
-position: relative;
-height: 10px;
-    a{
-        position: absolute;
-        bottom: 10px;
-        font-size: 12px;
-        &:last-child{
-            right:0;
-        }
-    }
-}
+
 }
