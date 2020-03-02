@@ -15,26 +15,9 @@ export class ChartDisplayPage implements OnInit {
 
   private chart: am4charts.XYChart;
   public displayDuration;
-  public chartHeight;
-  ratio = window.devicePixelRatio || 1;
-  deviceWidth = screen.width * this.ratio;
-  deviceHeight = screen.height * this.ratio;
-  
 
   constructor( public modalController: ModalController, private zone: NgZone, public nav: NavController, public loadingController: LoadingController, private screenOrientation: ScreenOrientation, private platform: Platform ) { 
     this.displayDuration = "MAX";
-
-    this.platform.ready().then(()=>{
-      if (this.platform.is('desktop')) {
-        this.chartHeight = (this.deviceHeight)*0.115 + "vh";
-      } 
-      else if (this.platform.is('ios')) {
-        this.chartHeight = (this.deviceHeight)*0.106 + "vh";
-      }
-      else if (this.platform.is('android')) {
-        this.chartHeight = (this.deviceHeight)*0.0753 + "vh";
-      }
-    });
    }
 
   ngOnInit() {
@@ -44,10 +27,12 @@ export class ChartDisplayPage implements OnInit {
     this.modalController.dismiss({
       'dismissed': true
     });
+    this.screenOrientation.unlock();
   }
 
   async ngAfterViewInit(){
     this.platform.ready().then(()=>{
+      this.screenOrientation.unlock();
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     },
     error => {
@@ -292,10 +277,6 @@ export class ChartDisplayPage implements OnInit {
         this.chart.dispose();
       }
     });
-  }
-
-  ionViewWillUnload(){
-    this.screenOrientation.unlock();
   }
 
 }

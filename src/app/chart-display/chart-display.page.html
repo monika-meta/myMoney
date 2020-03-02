@@ -25,10 +25,10 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
+  <div id="container" style="height: 100%;">
     <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="fromfield" class="amcharts-input" style="display:none"></ion-datetime>
     <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Date" id="tofield" class="amcharts-input" style="display:none"></ion-datetime>
     <div id="legenddiv" style="height: 30px !important;"></div>
-    <div id="chartdiv" style="width: 100%;" [style.height]="chartHeight"></div>
+    <div id="chartdiv" style="width: 100%; height: calc(100% - 40px);"></div>
   </div>
 </ion-content>
