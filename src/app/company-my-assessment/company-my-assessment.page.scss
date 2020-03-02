@@ -1,71 +1,120 @@
-.assesment-box{
-padding:20px 15px;
-font-size: 12px;    border:1px solid #464646;
-    label{
+.assesment-box {
+    font-size: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 10px 0px #ccc;
+
+    .content {
+        padding: 15px;
+
+        .custom-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .ball {
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        margin: 0 auto;
+        color: #fff;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at 50% 120%, #038a3d, #345d46 80%, #06380c 100%);
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: radial-gradient(circle at 50% 120%, rgba(6, 133, 44, 0.5), rgba(39, 180, 39, 0) 70%);
+            border-radius: 50%;
+            bottom: 2.5%;
+            left: 5%;
+            opacity: 0.6;
+            height: 100%;
+            width: 90%;
+            filter: blur(5px);
+            z-index: 2;
+
+        }
+
+        &:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, rgba(24, 168, 36, 0.8), rgba(52, 197, 38, 0.8) 14%, rgba(16, 185, 72, 0) 24%);
+            transform: skewX(-20deg);
+            filter: blur(10px);
+        }
+        &.ball-yellow{
+            background: radial-gradient(circle at 50% 120%, #FFEB3B, #CDDC39 80%, #ffce86 100%);
+            color: #000;
+            &::before{
+                background: radial-gradient(circle at 50% 120%, rgba(255, 193, 7, 0.73), rgba(39, 180, 39, 0) 70%);
+            }
+            &::after{
+                background: radial-gradient(circle at 50% 50%, rgb(251, 218, 118), rgb(255, 242, 123) 14%, rgba(16, 185, 72, 0) 24%);
+            }
+        }&.ball-red{
+            background:radial-gradient(circle at 50% 120%, #F44336, #f04141 80%, #f25454 100%);
+            &::before{
+                background: radial-gradient(circle at 50% 120%, #f0414194, rgba(39, 180, 39, 0) 70%);
+            }
+            &::after{
+                background: radial-gradient(circle at 50% 50%, #f04141, #d33939 14%, rgba(16, 185, 72, 0) 24%);
+            }
+        }
+    }
+
+    label {
         background-color: #038a3d;
         display: inline-block;
-        padding:10px;
+        padding: 10px;
 
-        color:#fff;
+        color: #fff;
     }
-    .title{
+
+    .title {
         display: block;
-        margin:0;
+        margin: 0;
         margin-bottom: 10px;
-        text-align: center;
-        span{
-            display: block;
-        }
-    }
-}
-.assesment-wrapper{
-    padding:10px;
-    
-    .assesment-top{
-        display: flex;
-        margin-bottom: 20px;
-        .assesment-box{
-            width: 50%;
-            border:1px solid #464646;
-            text-align: center;
-            &:first-child{
-                border-right:none;
-            }
+        padding: 10px;
+        background: #2f2f2f;
+        text-align: left;
+        color: #fff;
 
-        }
     }
 }
-.radio-group{
+
+.assesment-wrapper {
+    padding: 10px;
+
+
+}
+
+.radio-group {
     display: inline-block;
-    margin-right: 12px;
     vertical-align: middle;
+    text-align: center;
     margin-top: 20px;
-    ion-radio{
+
+    ion-radio {
         vertical-align: middle;
     }
-    .lbl{
-        padding:10px;
-        margin-left: 10px;
-        min-width: 110px;
-        text-align: center;
-        display: inline-block;
-        &.lbl-green{
-            background-color: #038a3d;
-            
-        } &.lbl-yellow{
-            background-color: #ffcf06;
-            
-        } &.lbl-red{
-            background-color: #f00000;
-            
-        } &.lbl-gray{
-            background-color: #6a6e62;
-            
-        }
-      
+
+    .ball {
+        margin-top: 10px;
     }
-   
+
 }
-.text-center{
+
+.text-center {
     text-align: center;
 }

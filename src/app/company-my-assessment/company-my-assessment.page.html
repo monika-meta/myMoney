@@ -9,11 +9,15 @@
       Money Works 4me <span>Assesment</span>
     </p>
     
-      <label for="">Very good</label>
+     <div class="content">
+      <div class="ball">Very good</div>
+     </div>
     </div><div class="assesment-box">   <p class="title">
-      Community <span>Assesment</span></p>
+      Community Assesment</p>
     
-      <label for="">Very good</label>
+     <div class="content">
+      <div class="ball">Very good</div> 
+     </div>
     </div>
   </div>
   <div class="assesment-bottom">
@@ -21,18 +25,19 @@
       <p class="title">
         Select Your Assessment of 10 Year X-Ray
       </p>
-      <ion-radio-group>
+      <div class="content">
+      <ion-radio-group class="custom-group">
         <div class="radio-group">
           
           <ion-radio slot="start" value="Very Good"></ion-radio>
-          <ion-label class="lbl lbl-green" >Very Good</ion-label>
+          <div class="ball">Very good</div>
         </div>
         <div class="radio-group">
-          <ion-radio slot="start"  value="SomeWhat Good"></ion-radio>          
-          <ion-label class="lbl lbl-yellow">SomeWhat Good</ion-label>
+          <ion-radio slot="start"  value="SomeWhat Good"></ion-radio>    
+          <div class="ball ball-yellow">SomeWhat good</div>   
         </div><div class="radio-group">
-          <ion-radio slot="start"  value="Not Good"></ion-radio>          
-          <ion-label class="lbl lbl-red">Not Good</ion-label>
+          <ion-radio slot="start"  value="Not Good"></ion-radio> 
+          <div class="ball ball-red">Not good</div>          
         </div>
       </ion-radio-group>
       <div class="text-center">
@@ -40,7 +45,7 @@
           <ion-button href="#"  color="dark">Save</ion-button>
         </div>
       </div>
-    </div>
+    </div></div>
   </div>
 </div>
 </ion-content>

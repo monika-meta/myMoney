@@ -13,12 +13,42 @@
     padding:10px;
     color: #fff;
     position: relative;
-    ion-button{
-        top: 0;
-        position: absolute;
-        right: 5px;
-        padding: 0;
-        height: 26px;
+
+button{
+    top: 5px;
+    position: absolute;
+    right: 5px;
+    padding: 0;
+    background-color: #989aa2;
+    height: 22px;
+    width: 24px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 2px 0px #abadb4;
+    -moz-box-shadow: 0px 2px 0px #abadb4;
+    -ms-box-shadow: 0px 2px 0px #abadb4;
+    -o-box-shadow: 0px 2px 0px #abadb4;
+    box-shadow: 0px 2px 0px #abadb4;    
+    -webkit-transition: All 250ms ease;
+    -moz-transition: All 250ms ease;
+    -o-transition: All 250ms ease;
+    -ms-transition: All 250ms ease;
+    transition: All 250ms ease;
+    &:active{
+        top: 7px;
+        outline:none;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        -ms-box-shadow: none !important;
+        -o-box-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-transition: All 250ms ease;
+        -moz-transition: All 250ms ease;
+        -o-transition: All 250ms ease;
+        -ms-transition: All 250ms ease;
+        transition: All 250ms ease;
+    }
     }
     p{
         font-size: 12px;
@@ -36,11 +66,20 @@
         color: #f00;
     }
     .diff-price{
-        font-size:15px;
+        font-size: 13px;
         margin-left: 5px;
-    margin-top: 2px;
-    top: -3px;
-    position: relative;
+        margin-top: 2px;
+        top: -8px;
+        position: relative;
+        .date{
+            display: block;
+            position: absolute;
+            color: #b9b9b9;
+            left: -6px;
+            white-space: nowrap;
+            font-size: 10px;
+            top: 15px;
+        }
     }
     p{
         padding-left: 15px;
