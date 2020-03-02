@@ -13,9 +13,6 @@ export class CompanyOverviewPage implements OnInit {
   constructor(public modalController: ModalController, private screenOrientation: ScreenOrientation) {}
 
   ngOnInit() {
-  }
-
-  ionViewWillEnter(){
     if(this.screenOrientation.type != 'portrait'){
       this.screenOrientation.unlock();
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);

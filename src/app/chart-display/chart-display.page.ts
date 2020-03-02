@@ -276,6 +276,7 @@ export class ChartDisplayPage implements OnInit {
       if (this.chart) {
         this.chart.dispose();
       }
+      this.screenOrientation.unlock();
     });
   }
 
