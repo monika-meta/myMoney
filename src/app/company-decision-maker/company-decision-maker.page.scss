@@ -1,142 +1,161 @@
-.dicision-wrapper{
+.dicision-wrapper {
     padding: 15px;
-    .box{
+
+    .box {
         margin-bottom: 15px;
-        &.style-2{
-            .header{
-                background-color: #dcf172;
-                color: #000;
-            } .content
-            {
-                background-color:#cbe061;
-                padding-bottom: 5px;
-            }
+
+       
+        .header {
+            padding: 10px;
+            background-color: #2f2f2f;
+            color: #fff;
         }
-        .header{
-            padding:10px;
-            background-color: #2eaddc;
+
+        .content {
+            padding: 15px 15px 5px;
         }
-        .content{
-            padding:15px;
-            background-color: #d5f2ff;
-        }
-        .assured-bar{
+
+        .assured-bar {
             background-color: #eef2e6;
-            padding:10px;
+            padding: 10px;
             margin-bottom: 20px;
             color: #000;
             position: relative;
-            p{
+
+            p {
                 margin: 0;
             }
-        .rating{
-            background-color: #038a3d;
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 70px;
-            color: #fff;
-            padding: 4px;
-            font-size: 12px;
-            padding-left: 30px;
-            text-align: center;
-            .custom-star{
+
+            .rating {
+                background-color: #038a3d;
                 position: absolute;
-    left: 10px;
-    font-size: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #e9ff00;
-            }
-        }
-        }
-        .time-box{
-            background-color: #fff;
-    padding: 30px 15px 2px;
-    text-align: center;
-    color: #000;
-            h4{
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 70px;
+                color: #fff;
+                padding: 4px;
+                font-size: 12px;
+                padding-left: 30px;
                 text-align: center;
-    box-shadow: 0 0 4px 0px #000;
-    display: inline-block;
-    padding: 5px;
-    font-size: 13px;
-margin-bottom: 0;
-    border-radius: 50px;
+
+                .custom-star {
+                    position: absolute;
+                    left: 10px;
+                    font-size: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #e9ff00;
+                }
             }
-            p{
-            margin-top: 5px;
+        }
+
+        .time-box {
+            background-color: #fff;
+            padding: 0 15px 2px;
+            text-align: center;
+            color: #000;
+
+            h4 {
+                text-align: center;
+                box-shadow: 0 0 4px 0px #000;
+                display: inline-block;
+                padding: 5px;
+                font-size: 13px;
+                margin-bottom: 0;
+                border-radius: 50px;
+            }
+
+            p {
+                margin-top: 5px;
             }
         }
     }
 }
-.right-box{
-.bar-box{
-    position: relative;
-    padding: 30px 10px 80px;
-    margin-bottom: 10px;
-    .cmp-box    
-    {
-        position: absolute;
-        top: -5px;
-        font-size: 10px;
-        right: 0;
-        color: #000;
-        border: 1px solid #000;
-        padding: 0 5px;
-        border-radius: 5px;
-        text-align: center;
-        strong  {
-            color: #f01f26;
-            display: block;
-        }
-    }
-    .bar{
-        background-image: linear-gradient(to right, #009b2c, #54a217, #7fa800, #a7ac00, #ccae00, #dda600, #ee9c00, #ff9100, #fd7a06, #fb6212, #f6461d, #f01f26);
-        height: 10px;
-        width: 80%;
-        margin:0 auto;
+
+.right-box {
+    .bar-box {
         position: relative;
-        .val-plus,.val-nutral,.val-minus{
+        padding: 30px 10px 45px;
+        margin-bottom: 10px;
+
+        .cmp-box {
             position: absolute;
-        }
-        .val-nutral{
-            top:22px;   font-size:11px;
-            left: 50%;
-            transform: translateX(-50%);strong{
+            top: -5px;
+            font-size: 10px;
+            right: 0;
+            color: #000;
+            border: 1px solid #000;
+            padding: 0 5px;
+            border-radius: 5px;
+            text-align: center;
+
+            strong {
+                color: #f01f26;
                 display: block;
             }
         }
-        .val-plus,.val-minus{
-            background-color: #fff;
-            padding:2px 5px;
-            font-size:11px;
-            text-align: center;
-            min-width:40px;
-            &:before{
-                content: "";
-                height: 14px;
-                width: 3px;
-                background-color: #ccc;
-                top: -20px;
+
+        .bar {
+            background-image: linear-gradient(to right, #009b2c, #54a217, #7fa800, #a7ac00, #ccae00, #dda600, #ee9c00, #ff9100, #fd7a06, #fb6212, #f6461d, #f01f26);
+            height: 10px;
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+
+            .val-plus,
+            .val-nutral,
+            .val-minus {
+                position: absolute;
+            }
+
+            .val-nutral {
+                top: 22px;
+                font-size: 11px;
                 left: 50%;
                 transform: translateX(-50%);
-                position: absolute;
 
+                strong {
+                    display: block;
+                }
             }
-            strong{
-                display: block;
+
+            .val-plus,
+            .val-minus {
+                background-color: #2f2f2f;
+                color: #fff;
+                padding: 2px 5px;
+                font-size: 11px;
+                text-align: center;
+                min-width: 40px;
+
+                &:before {
+                    content: "";
+                    height: 14px;
+                    width: 3px;
+                    background-color: #ccc;
+                    top: -20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    position: absolute;
+
+                }
+
+                strong {
+                    display: block;
+                }
             }
-        }
-        .val-plus{
-            top:20px;
-            left:30px;
-        }.val-minus{
-            right: 30px;
-            top: 20px;
+
+            .val-plus {
+                top: 20px;
+                left: 30px;
+            }
+
+            .val-minus {
+                right: 30px;
+                top: 20px;
+            }
         }
     }
-}
 
 }
